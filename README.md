@@ -1,4 +1,5 @@
 # AWS Bastian Host with Terraform
+
 > Demonstrating how to use Bastian Host with Terraform in AWS.
 
-**Aim** - Provision 2 EC2 instances A and B in a private subnet. Run `kubeadm init` inside A making it the master node and make B join A as a worker node.
+**Aim** - Provision an EC2 instance in a private subnet. Run `kubeadm init` inside the instance via a Bastian Host. Expose the Kubernetes API server to the internet via a ELB.

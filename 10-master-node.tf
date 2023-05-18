@@ -3,7 +3,7 @@ resource "aws_instance" "master_node" {
 
   vpc_security_group_ids = [
     aws_security_group.cluster.id,
-    /* aws_security_group.kubeapi.id */
+    // aws_security_group.kubeapi.id
   ]
 
   ami           = data.aws_ami.ubuntu.image_id
@@ -31,4 +31,9 @@ resource "aws_instance" "master_node" {
   depends_on = [
     aws_instance.bastian_host
   ]
+}
+
+resource "aws_elb_attachment" "master_node_elb_attachment" {
+  elb      = aws_elb.this.id
+  instance = aws_instance.master_node.id
 }
